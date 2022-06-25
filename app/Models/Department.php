@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
+    protected $fillable = [
+        //
+    ];
+
+    public function acquisitions(){
+        return $this->hasMany(Acquisition::class);
+    }
     use HasFactory;
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FamiliesController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SocioController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,7 @@ Route::get ('payments/{socio}/create', [PaymentsController::class, 'create'])->n
 Route::post('payments', [PaymentsController::class, 'store'])->name('payments.store');
 Route::get ('payments', [PaymentsController::class, 'index'])->name('payments.index');
 Route::get ('payments/{id}/details', [PaymentsController::class, 'show'])->name('payments.show');
+
+Route::get('products', [ProductsController::class, 'index'])->name('products.index');
+Route::get('products/{provider}/create', [ProductsController::class, 'create'])->name('products.create');
+Route::post('products', [ProductsController::class, 'store'])->name('products.store');

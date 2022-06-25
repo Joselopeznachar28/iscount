@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Departament;
-use App\Models\Socio;
-use App\Models\Familiar;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,11 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        /* $this->call([
-             FamiliaresSeeder::class,
-             SocioSeeder::class,
-             Departament::class,
-        ]);*/
+        //\App\Models\Provider::factory(10)->create();
+        //\App\Models\Product::factory(50)->create();
+         $classes = [
+            ProvidersSeeder::class,
+            ProductsSeeder::class
+        ];
+
+        $this->call($classes);
     }
 }
