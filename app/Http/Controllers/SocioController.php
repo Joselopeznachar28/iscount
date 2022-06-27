@@ -103,6 +103,7 @@ class SocioController extends Controller
         $socio = Socio::findOrFail($id)->load(['families','payments']);
 
         return view('socios.show', compact('socio'));
+
     }
 
     /**
@@ -116,6 +117,7 @@ class SocioController extends Controller
         $socio = Socio::findOrFail($id)->load('familiares');
 
         return view('socios.edit', compact('socio'));
+
     }
 
     /**
@@ -129,6 +131,7 @@ class SocioController extends Controller
     {
         //
         $socio  = Socio::findOrFail($id);
+
         $socio  = Socio::where('id', '=', $id )->update([
             'name'            => $request->name,
             'lastname'        => $request->lastname,
@@ -140,6 +143,7 @@ class SocioController extends Controller
             ]);
 
         return redirect()->route('socios.index',compact('socio'));
+        
     }
     /**
      * Remove the specified resource from storage.
@@ -153,5 +157,6 @@ class SocioController extends Controller
         $socio->delete();
 
         return back();
+
     }
 }

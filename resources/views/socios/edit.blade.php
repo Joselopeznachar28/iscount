@@ -52,15 +52,9 @@
                     <div class="col-sm-2">
                         <label for="tipo_identificacion">Nacionalidad</label>
                         <select name="tipo_identificacion" id="tipo_identificacion" class="form-control">
-<<<<<<< HEAD
                             <option value="Venezolano">V-</option>
                             <option value="Extranjero">E-</option>
                             <option value="Extranjero" selected="selected" disabled>-- Seleccionar --</option>
-=======
-                            @foreach($ciudadania as $nacionalidad)
-                                <option value="{{$nacionalidad}}">{{$nacionalidad}}</option>
-                            @endforeach
->>>>>>> 70540c2e13bc2ec4ca15c2d0a573000d0463a751
                         </select>
                     </div>
                     <div class="col-sm-4">
@@ -82,15 +76,9 @@
                     <div class="col-sm-6">
                         <label for="status">Estado</label>
                         <select name="status" id="status" class="form-control">
-<<<<<<< HEAD
                             <option selected='selected' value="Activo"> Activo </option>
                             <option selected='selected' value="Inactivo"> Inactivo </option>
                             <option selected='selected' disabled> -- Seleccionar -- </option>
-=======
-                            @foreach ($status_socios as $status)
-                            <option placeholder="{{$socio->status}}" selected='selected'> {{ $status }} </option>
-                            @endforeach  
->>>>>>> 70540c2e13bc2ec4ca15c2d0a573000d0463a751
                         </select>
                     </div>
                 </div>
@@ -99,11 +87,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <label for="membership">Membresia</label>
-<<<<<<< HEAD
                         <input type="membership" id="membership" class="form-control" value="{{ $socio->membership }}" disabled readonly>
-=======
-                        <input type="membership" id="membership" class="form-control" value="{{ $socio->membership }}">
->>>>>>> 70540c2e13bc2ec4ca15c2d0a573000d0463a751
                     </div>
                 </div>
                 <br>

@@ -19,16 +19,16 @@
             </thead>
             <tbody class="table-dark">
                 @foreach ($payments as $payment)
-                <tr>
-                    <td>{{$payment->descripcion}}</td>
-                    <td>{{$payment->payment_id}} </td>
-                    <td>{{$payment->fecha_pago}} </td>
-                    <td>
-                        <a href="{{route('payments.show', $payment->id)}}" class="btn btn-outline-primary">Ver</a>
-                    </td>
-                </tr>
-                    @endforeach
+                    <tr>
+                        <td>{{$payment->descripcion}}</td>
+                        <td>{{$payment->payment_id}} </td>
+                        <td>{{$payment->fecha_pago}} </td>
+                        <td>
+                            <a href="{{route('payments.show', $payment->id)}}" class="btn btn-outline-primary">Ver</a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
-            
+        </table>
         
     @endsection
