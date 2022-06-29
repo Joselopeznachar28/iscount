@@ -62,8 +62,8 @@ class PaymentsController extends Controller
             if($status === 'Activo'){
                 $status = 'Inactivo';
             }
-        }
-        return $endDate;*/
+        }*/
+        return $endDate;
     }
 
     public function show($id){

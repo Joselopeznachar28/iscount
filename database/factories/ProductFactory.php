@@ -19,8 +19,7 @@ class ProductFactory extends Factory
                 return Provider::factory()->create()->id;
             },
             'name'          => $this->faker->name(),
-            'amount'        => $this->faker->randomNumber(4, true),
-            'price'         => $this->faker->randomFloat(2, 0.50, 10000),
+            'price'        => $this->faker->randomNumber(4, true),
             'description'   => $this->faker->text(50),
         ];
     }

@@ -2,7 +2,7 @@
     
     @section('contenido')
 
-    <h1>Detalles del Proveedor</h1><hr>
+    <h1>Detalles del Proveedor</h1><hr><br>
 
     <!-- NOMBRE E IDENTIFICACION -->
     <div class="row">
@@ -13,12 +13,22 @@
         </div>
 
         <div class="col-sm-6">
-            <label for="identification" class="form-label">Identificacion</label>
-            <input type="text" name="identification" id="identification" class="form-control" readonly value="{{$provider->identification}}" readonly>
+
+            <div class="row">
+
+                <div class="col-sm-2">
+                    <label for="type_identification" class="form-label">Tipo</label>
+                    <input type="text" name="type_identification" id="type_identification" class="form-control" value="{{$provider->type_identification}}" readonly>
+                </div>
+                <div class="col-sm-4">
+                    <label for="identification" class="form-label">Identificacion</label>
+                    <input name="identification" id="identification" class="form-control" value="{{$provider->identification}}" readonly>
+                </div>
+
+            </div>
+               
         </div>
-
     </div>
-
     <!-- EMAIL Y CONTACTO -->
     <div class="row">
 
@@ -42,12 +52,12 @@
         </div>
 
     </div>
+    <br>
 
     <div class="row">
         <div class="col-sm-2">
             <a href="{{url('providers')}}" class="btn btn-outline-primary">Regresar</a>
         </div>
     </div>
-
 
     @endsection

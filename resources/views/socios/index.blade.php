@@ -24,7 +24,7 @@
     <div class="contenedor buscador">
       <h1>listado de socios</h1>
       <form action="{{ route ('socios.index') }}" class="f-end">
-          <input type="text" name="search" id="search" value='{{$consulta}}' class="input">
+          <input type="text" name="search" id="search" value='{{$search}}' class="input">
           <input type="submit" value="Buscar" class="input-buscar">
       </form>
       <hr>  
@@ -46,8 +46,15 @@
         </thead>
         <tbody class="table-dark">
           <tr>
-            <td> {{$payments->fecha_vencimiento}}</td>
             @foreach( $socios as $socio )
+
+              <td> {{
+              $socio->payments->count() ?
+              $socio->payments()
+              ->latest('fecha_vencimiento')
+              ->first()
+              ->fecha_vencimiento : "No hay pago cargado"
+              }}</td>
               <td> {{$socio->lastname}}       </td>
               <td> {{$socio->name}}           </td>
               <td> {{$socio->membership}}     </td>
@@ -56,7 +63,7 @@
               <!-- BOTONES DE OPCIONES-->
               <td class="opciones">
                 <a href="{{ route('socios.edit', $socio->id)}}" class="btn btn-outline-warning">Editar<a>  
-                <form action="{{ route ('socios.destroy', $socio) }}"        method="post">     
+                <form action="{{route('socios.destroy', $socio) }}"method="post">     
                   @csrf
                   @method('DELETE')
                   <button type="submit"

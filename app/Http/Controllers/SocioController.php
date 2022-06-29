@@ -24,26 +24,24 @@ class SocioController extends Controller
     public function index(Request $request)
     {   
         // Se realiza un join con el modelo socio a la tabla familiars y hacen la conexion con el id de la tabla socio y el id de la tabla familiars
-        $consulta = $request->input('search');
-        $socios = Socio::where('name','LIKE','%'.$consulta.'%')
+        $search = $request->input('search');
+
+       /* $socios = Socio::where('name','LIKE','%'.$consulta.'%')
             ->orWhere('lastname', 'LIKE', '%'.$consulta.'%')
             ->orWhere('identification', 'LIKE', '%'.$consulta.'%')
             ->orWhere('status','LIKE', '%'.$consulta. '%')
             ->orderBy('id','asc')
-            ->get();
-        $paginar = DB::table('socios')->simplePaginate(4);
-       /* $validateData = $request->validate([ 
-            'name'           => ['required'],
-            'lastname'       => ['required'],
-            'identification' => ['required','min:8','max:9'],
-            'email'          => ['required','email'],
-            'address'        => ['required'],
-            'status'         => ['required'],
-            'membership'     => ['required']
-        ]);*/
-        $payments = Payment::select('fecha_vencimiento')->orderBy('id', 'desc')->first();
+            ->get();*/
 
-        return view('socios.index',compact('socios','consulta','paginar','payments'));
+            $socios = Socio::with('payments')->when($search, function ($query, $search) {
+                $query->orWhere('lastname', 'LIKE', '%'.$search.'%')
+                    ->orWhere('identification', 'LIKE', '%'.$search.'%')
+                    ->orWhere('status','LIKE', '%'.$search.'%');
+            })
+            ->orderBy('id','asc')
+            ->paginate(5);
+
+        return view('socios.index',compact('socios','search'));
 
     }
     /**
@@ -114,7 +112,7 @@ class SocioController extends Controller
      */
     public function edit($id)
     {
-        $socio = Socio::findOrFail($id)->load('familiares');
+        $socio = Socio::findOrFail($id)->load('families');
 
         return view('socios.edit', compact('socio'));
 
@@ -153,7 +151,7 @@ class SocioController extends Controller
      */
     
     public function destroy(Socio $socio){
-        //
+        
         $socio->delete();
 
         return back();

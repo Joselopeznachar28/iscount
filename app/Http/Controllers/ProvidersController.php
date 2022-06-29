@@ -24,6 +24,7 @@ class ProvidersController extends Controller
         
         $providers = Provider::create([
             'name'              => $request->name,
+            'type_identification'    => $request->type_identification,
             'identification'    => $request->identification,
             'email'             => $request->email,
             'contact'           => $request->contact,
@@ -46,7 +47,7 @@ class ProvidersController extends Controller
 
         $provider = Provider::findOrFail($id);
 
-        return view('providers/edit', compact('provider'));
+        return view('providers.edit', compact('provider'));
         
     }
 
@@ -56,6 +57,7 @@ class ProvidersController extends Controller
 
         $provider = Provider::where('id', '=' , $id)->update([
             'name' => $request->name,
+            'type_identification' => $request->type_identification,
             'identification' => $request->identification,
             'email' => $request->email,
             'contact' => $request->contact,

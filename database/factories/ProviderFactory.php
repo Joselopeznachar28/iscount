@@ -15,6 +15,7 @@ class ProviderFactory extends Factory
     {
         return[
             'name'              => $this->faker->name(),
+            'type_identification' => 'V-',
             'identification'    => $this->faker->numerify('########'),
             'email'             => $this->faker->unique()->safeEmail(),
             'contact'           => $this->faker->numerify('###########'),

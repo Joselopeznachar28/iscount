@@ -9,6 +9,7 @@ class Provider extends Model
 {
     protected $fillable = [
         'name',
+        'type_identification',
         'identification',
         'email',
         'contact',

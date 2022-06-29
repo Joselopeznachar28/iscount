@@ -6,7 +6,7 @@
         @method('PUT')
         @csrf
 
-        <h1>Editar Proveedor</h1><hr>
+        <h1>Editar Proveedor</h1><hr><br>
         
         <!-- NOMBRE E IDENTIFICACION -->
         <div class="row">
@@ -16,8 +16,26 @@
                 <input name="name" id="name" class="form-control" value="{{$provider->name}}">
             </div>
             <div class="col-sm-6">
-                <label for="identification" class="form-label">Identificacion</label>
-                <input name="identification" id="identification" class="form-control" value="{{$provider->identification}}">
+                <div class="row">
+
+                    <div class="col-sm-4">
+                        <label for="identification" class="form-label">Documento</label>
+                        <select name="type_identification" id="type_identification" class="form-control">
+                            <option selected="selected" value="EMPRESA">R-</option>
+                            <option selected="selected" value="PERSONAL">C-</option>
+                            <option selected="selected" disabled>-- Selecionar --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-8">
+
+                        <label for="identification" class="form-label">Identificacion</label>
+                        <input name="identification" id="identification" class="form-control" value="{{$provider->identification}}">
+    
+                    </div>
+
+                </div>
+ 
             </div>
 
         </div>

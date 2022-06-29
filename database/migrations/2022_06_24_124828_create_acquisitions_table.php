@@ -14,7 +14,14 @@ class CreateAcquisitionsTable extends Migration
     public function up()
     {
         Schema::create('acquisitions', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->date('date_acquisition');
+            $table->date('date_max')->nullable();
+            $table->text('description');
+            $table->uuid('acquisition_code')->unique();
+
+            $table->foreignId('department_id')->constrained('departments')->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

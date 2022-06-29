@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Acquisition extends Model
 {
     protected $fillable = [
-        //
+        'department_id',
+        'date_acquisition',
+        'date_max',
+        'description',
+        'acquisition_code',
     ];
 
     public function department(){

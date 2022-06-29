@@ -19,7 +19,7 @@ class ProvidersSeeder extends Seeder
     {
 
      Provider::factory(20)
-     ->has(Product::factory()->count(5), 'products')
+     ->has(Product::factory()->count(2), 'products')
      ->create();
 
         /*DB::table('providers')->insert([

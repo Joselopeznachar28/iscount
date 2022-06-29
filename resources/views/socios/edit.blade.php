@@ -92,50 +92,9 @@
                 </div>
                 <br>
 
-<<<<<<< HEAD
             <div class="row-3">
                 <button  type="submit" onclick="return confirm('Desea guardar la informacion?')" value="Guardar" class="btn btn-outline-success">Guardar</button>
-=======
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h4 style="text-align: center;">
-                            Datos del Familiar
-                        </h4>
-                    </div>
-                </div>
-                <hr>
-                
-                @foreach ($socio->familiares as $familiar)
-                <div class="row">
-                    <div class="col-sm-6">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" value="{{$familiar->name}}" class="form-control" aria-label="Disabled input example" disabled readonly>
-                    </div>
-                    <div class="col-sm-6">
-                        <label for="apellido">Apellido</label>
-                        <input type="text" name="apellido" id="apellido" value="{{$familiar->lastname}}" class="form-control" aria-label="Disabled input example" disabled readonly>
-                    </div>
-                </div>
-                <br>
 
-                <div class="row">
-                    <div class="col-sm-6">
-                        <label for="identificacion">Cedula</label>
-                        <input type="text" name="identificacion" value="{{$familiar->identification}}" id="identificacion" class="form-control" aria-label="Disabled input example" disabled readonly>
-                    </div>
-                    <div class="col-sm-6">
-                        <label for="familiar">Familiar</label>
-                        <br>
-                        <input type="text" name="type" id="type" value="{{$familiar->type}}" class="form-control" aria-label="Disabled input example" disabled readonly>
-                        <br>
-                    </div>
-                </div>
-                <br>
-                @endforeach
-            <div class="row-3">
-                <button  type="submit" onclick="return confirm('Desea guardar la informacion?')" value="Guardar" class="btn btn-outline-success">Guardar</button>
-                <button  type="reset" onclick="return confirm('Desea resetear el formulario?')" value="Borrar" class="btn btn-outline-warning">Borrar</button>
->>>>>>> 70540c2e13bc2ec4ca15c2d0a573000d0463a751
                 <a href="{{ route ('socios.index') }}" class="btn btn-outline-primary">Listado de Socios</a>
             </div>
         </div>

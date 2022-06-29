@@ -14,7 +14,10 @@ class CreateBudgetProductsTable extends Migration
     public function up()
     {
         Schema::create('budget_products', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->float('price');
+            $table->float('quantity');
             $table->timestamps();
         });
     }
