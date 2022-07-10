@@ -51,7 +51,7 @@
             <div class="col-sm-6">
 
                 <input type="submit" class="btn btn-outline-success" onclick="return confirm('¿Desea Guardar los Cambios?')" value="Actualizar">
-                <a href="{{url('acquisitions.index')}}" class="btn btn-outline-primary" onclick="return confirm('¿Desea salir sin actualizar cambios?')">Regresar</a>
+                <a href="{{route('acquisitions.index')}}" class="btn btn-outline-primary" onclick="return confirm('¿Desea salir sin actualizar cambios?')">Regresar</a>
 
             </div>
 

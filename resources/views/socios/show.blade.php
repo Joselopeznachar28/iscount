@@ -35,34 +35,27 @@
                 <label for="identification">Cedula</label>
                 <input type="text" name="identification" id="identification" value="{{$socio->identification}}" class="form-control" aria-label="Disabled input example" disabled readonly>
             </div>
-            <div class="col-sm-6">
-                <label for="status">Estado</label>
-                <input type="text" name="status" id="status" value="{{$socio->status}}" class="form-control" aria-label="Disabled input example" disabled readonly>   
-            </div>
-        </div>
-        <br>
 
-        <div class="row">
-            <div class="col-sm-6">
-                <label for="address">Direccion</label>
-                <input type="text" name="address" id="address" value="{{$socio->address}}" class="form-control"aria-label="Disabled input example" disabled readonly>
-            </div>
             <div class="col-sm-6">
                 <label for="email">Correo</label>
                 <input type="email" name="email" id="email" value="{{$socio->email}}" class="form-control" aria-label="Disabled input example" disabled readonly>
             </div>
+            
         </div>
         <br>
 
         <div class="row">
 
             <div class="col-sm-6">
-
-                <label for="membership">Membresia</label>
-                <input type="text" name="membership" id="membership" value="{{$socio->membership}}" class="form-control"aria-label="Disabled input example" disabled readonly>
-
+                <label for="address">Direccion</label>
+                <input type="text" name="address" id="address" value="{{$socio->address}}" class="form-control"aria-label="Disabled input example" disabled readonly>
             </div>
 
+            <div class="col-sm-6">
+                <label for="membership">Membresia</label>
+                <input type="text" name="membership" id="membership" value="{{$socio->membership}}" class="form-control"aria-label="Disabled input example" disabled readonly>
+            </div>
+            
         </div>
         <br>
 
@@ -75,6 +68,7 @@
         <hr>
         
         @foreach($socio->families as $family)
+
             <div class="row">
                 <div class="col-sm-6">
                     <label for="nombre">Nombre</label>
@@ -98,7 +92,7 @@
                 </div>
             </div>
             <hr>
-            <br>
+            
         @endforeach
 
         <div class="row">

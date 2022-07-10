@@ -38,6 +38,7 @@
                                 Eliminar
                                 </button>
                             </form>
+                            <a href="{{route('budgets.create', $acquisition->id)}}" class="btn btn-outline-success"> Agregar Cotizaciones</a>
                         </td>
                     </tr>
                 @endforeach

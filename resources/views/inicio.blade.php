@@ -29,8 +29,8 @@
                     <a href="#sistema">Acerca de</a>
                     <a href="#hotel">Hotel</a>
                     <a href="#departamentos">Departamentos</a>
-                    <a href="{{ url ('register')}}">Registrarse</a>
-                    <a href="{{ url ( 'login' )}}">Login</a>
+                    <a href="{{route('registers.create')}}">Registrarse</a>
+                    <a href="{{route('login.view_login')}}">Login</a>
                 </nav>
             </div>
             <!-- TEXTO DE IMAGEN DEL SISTEMA -->
@@ -123,7 +123,7 @@
 
     <footer></footer>
         <!-- Modal -->
-        <!-- <form action="{{ route('login') }}" method="post">
+        <!-- <form action="" method="post">
             <div class="modal fade " style="margin-top: 130px ;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -147,7 +147,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <button type="submit" value="Ingresar"class="btn btn-outline-warning">Ingresar</button>
-                                    <a href="{{ url ('password/reset')}}" class="btn btn-outline-warning">Recuperar Contraseña</a>
+                                    <a href="" class="btn btn-outline-warning">Recuperar Contraseña</a>
                                 </div>
                             </div>
                         </div>

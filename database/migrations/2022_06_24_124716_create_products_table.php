@@ -16,10 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->float('price');
             $table->text('description');
-
-            $table->foreignId('provider_id')->constrained('providers')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });

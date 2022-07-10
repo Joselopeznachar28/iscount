@@ -2,8 +2,8 @@
 
 
     <nav class="navegacion-principal">
-        <a href="{{route('products.index')}}">Productos</a>
-        <a href="{{route('providers.create')}}">Crear</a>
+        <a href="{{route('products.index')}}">Lista de Productos</a>
+        <a href="{{route('providers.create')}}">Crear Proveedor</a>
     </nav>
 
     @section('contenido')
@@ -47,7 +47,7 @@
                             class="btn btn-outline-danger" 
                             onclick="return confirm('Desea eliminar a este proveedor de la lista?')">Eliminar</button>
                         </form>
-                        <a href="{{route('products.create', $provider->id)}}" class="btn btn-outline-success">Añadir Producto</a>
+                        
                     </td>
                 </tr>
 

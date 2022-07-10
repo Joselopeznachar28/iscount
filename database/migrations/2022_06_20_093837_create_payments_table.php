@@ -17,11 +17,11 @@ class CreatePaymentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('forma_pago');
             $table->string('tipo_pago');
-            $table->float('monto');
+            $table->bigInteger('monto');
             $table->uuid('payment_id')->unique();
             $table->text('comprobante');
-            $table->date('fecha_pago');
-            $table->date('fecha_vencimiento');
+            $table->dateTime('fecha_pago');
+            $table->dateTime('fecha_vencimiento');
             $table->text('descripcion');
             $table->foreignId('socio_id')->constrained('socios')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

@@ -34,9 +34,8 @@ class SocioController extends Controller
             ->get();*/
 
             $socios = Socio::with('payments')->when($search, function ($query, $search) {
-                $query->orWhere('lastname', 'LIKE', '%'.$search.'%')
-                    ->orWhere('identification', 'LIKE', '%'.$search.'%')
-                    ->orWhere('status','LIKE', '%'.$search.'%');
+                $query->orWhere('identification', 'LIKE', '%'.$search.'%')
+                      ->orWhere('membership','LIKE', '%'.$search.'%');
             })
             ->orderBy('id','asc')
             ->paginate(5);
@@ -62,19 +61,10 @@ class SocioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     //Para crear
     public function store(Request $request)
     {  
-
-       /* $validateData = $request->validate([ 
-            'name'           => 'required | min:3',
-            'lastname'       => 'required | min:3',
-            'identification' => 'required | min:8 | max:9 | numeric',
-            'email'          => 'required | email | unique:socios',
-            'address'        => 'required | max:250',
-            'status'         => 'required',
-            'membership'     => 'required'
-        ]);*/
 
         $socio = Socio::create([
             'name'                  => strtoupper($request->name),
@@ -84,7 +74,6 @@ class SocioController extends Controller
             'email'                 => strtoupper($request->email),
             'address'               => strtoupper($request->address),
             'membership'            => strtoupper('MEM-'. (string) Str::random(5)),
-            'status'                => strtoupper($request->status),
         ]);
         
         return redirect()->route('socios.index',compact('socio'));
@@ -131,13 +120,13 @@ class SocioController extends Controller
         $socio  = Socio::findOrFail($id);
 
         $socio  = Socio::where('id', '=', $id )->update([
-            'name'            => $request->name,
-            'lastname'        => $request->lastname,
-            'typeIdentification'  => $request->tipo_identificacion,
-            'identification'  => $request->identification,
-            'email'           => $request->email,
-            'address'         => $request->address,
-            'status'          => $request->status,
+
+            'name'                  => strtoupper($request->name),
+            'lastname'              => strtoupper($request->lastname),
+            'typeIdentification'    => strtoupper($request->tipo_identificacion),
+            'identification'        => $request->identification,
+            'email'                 => strtoupper($request->email),
+            'address'               => strtoupper($request->address),
             ]);
 
         return redirect()->route('socios.index',compact('socio'));

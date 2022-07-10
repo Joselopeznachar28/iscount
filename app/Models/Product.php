@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'provider_id',
         'name',
-        'price',
         'description'
     ];
 
-    public function provider(){
-        return $this->belongsTo(Provider::class);
+    public function budgetProducts(){
+        return $this->hasMany(budgetProducts::class);
     }
+
     use HasFactory;
 }

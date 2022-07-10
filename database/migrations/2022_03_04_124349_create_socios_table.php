@@ -23,7 +23,6 @@ class CreateSociosTable extends Migration
             $table->string('identification');
             $table->string('email');
             $table->text('address');
-            $table->string('status');
             $table->uuid('membership')->unique();
             $table->timestamps();
         });

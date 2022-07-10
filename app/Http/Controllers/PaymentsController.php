@@ -13,7 +13,9 @@ class PaymentsController extends Controller
 {
 
     public function index(){
-        $payments = Payment::all();
+
+        $payments = Payment::with('socio')->get();
+        
         return view ('payments.index', compact('payments'));
     }
 

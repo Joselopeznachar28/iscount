@@ -10,7 +10,7 @@
         <table class="table">
             <thead>
                 <tr class="table-dark">
-
+                    <th scope="col">Membresia</th>
                     <th scope="col">Tipo de Operacion</th>
                     <th scope="col">Codigo de Pago  </th>
                     <th scope="col">Fecha del Pago  </th>
@@ -20,6 +20,7 @@
             <tbody class="table-dark">
                 @foreach ($payments as $payment)
                     <tr>
+                        <td>{{$payment->socio->membership}}</td>
                         <td>{{$payment->descripcion}}</td>
                         <td>{{$payment->payment_id}} </td>
                         <td>{{$payment->fecha_pago}} </td>

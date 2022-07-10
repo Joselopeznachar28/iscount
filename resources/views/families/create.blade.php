@@ -47,8 +47,11 @@
                 </div>
             </div><hr>  
         </div>
+        
         <!-- Repeticion de los campos familiar -->
-        <div id="otroFamiliar"></div>
+        <div id="otroFamiliar">
+
+        </div>
 
         <!-- BOTONES DE OPCIONES -->
         <div class="row-3 f-end">

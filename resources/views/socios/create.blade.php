@@ -43,14 +43,6 @@
                     <label for="address" class="form-label">Direccion</label>
                     <input type="text" name="address" id="address" placeholder="Ingrese la Direccion" class="form-control">
                 </div>
-                <div class="col-sm-6">
-                    <label for="status" class="form-label">Estado</label>
-                    <select name="status" id="status" class="form-control">
-                        <option value="Activo" selected='selected'> Activo </option>
-                        <option value="Inactivo" selected='selected'> Inactivo </option>
-                        <option value="Seleccione" selected='selected' disabled> -- Seleccione -- </option>
-                    </select>
-                </div>
             </div>
             <br>
             <!-- BOTONES DE OPCIONES -->

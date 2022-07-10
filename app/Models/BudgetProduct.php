@@ -11,6 +11,10 @@ class BudgetProduct extends Model
         //
     ];
 
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
+
     public function budget(){
         return $this->belongsTo(Budget::class);
     }

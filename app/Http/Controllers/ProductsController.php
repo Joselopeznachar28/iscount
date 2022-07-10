@@ -18,18 +18,14 @@ class ProductsController extends Controller
 
     public function create(){
 
-        $provider = Provider::all();
-
-        return view('products.create', compact('provider'));
+        return view('products.create');
 
     }
 
     public function store(Request $request){
 
         $products = Product::create([
-            'provider_id'   => $request->provider_id,
             'name'          => $request->input('name'),
-            'price'         => $request->input('price'),
             'description'   => $request->description,
         ]);
 
@@ -50,9 +46,7 @@ class ProductsController extends Controller
         $product = Product::find($id);
 
         $product = Product::where('id', '=' , $id)->update([
-            'provider_id'   => $request->provider_id,
             'name'          => $request->input('name'),
-            'price'         => $request->input('price'),
             'description'   => $request->description,
         ]);
 

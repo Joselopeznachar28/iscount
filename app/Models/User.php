@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -41,4 +42,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Encriptar password
+
+    //ACCESOR = ERMITEN ACCEDER A PROPIEDADES DE USUARIOS
+    //MUTATORS = CAMBIAR PARA HACER OPERACIONES
+
+    //Este es un mutator el bcryt
+
+    // Para poder ejecutar de forma automatica, laravel tiene un estandar para declarar y leer un metodo automaticamente.
+
+    //la palabra set, luego el nombre del atributo que quieres modificar y luego la palabra attribute
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
 }

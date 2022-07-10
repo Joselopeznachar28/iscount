@@ -4,11 +4,12 @@ use App\Http\Controllers\AcquisitionsController;
 use App\Http\Controllers\BudgetsController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\FamiliesController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProvidersController;
+use App\Http\Controllers\RegistersController;
 use App\Http\Controllers\SocioController;
-use App\Models\BudgetProduct;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,10 +22,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/inicio', function () {
     return view('inicio');
 });
+
+Route::get('registers', [RegistersController::class, 'create'])->name('registers.create');
+Route::post('registers', [RegistersController::class, 'store'])->name('registers.store');
+
+Route::get('login', [LoginController::class, 'view_login'])->name('login.view_login');
+Route::post('login', [LoginController ::class, 'login'])->name('login');
+
 Route::get ('families/{socio}/create', [FamiliesController::class, 'create'])->name('families.create');
 Route::post('families', [FamiliesController::class, 'store'])->name('families.store');
 
@@ -67,3 +74,11 @@ Route::get('acquisitions/{id}/edit', [AcquisitionsController::class, 'edit'])->n
 Route::put('acquisitions/{id}', [AcquisitionsController::class, 'update'])->name('acquisitions.update');
 Route::get('acquisitions/{id}', [AcquisitionsController::class, 'show'])->name('acquisitions.show');
 Route::delete('acquisitions/{id}', [AcquisitionsController::class, 'destroy'])->name('acquisitions.destroy');
+
+Route::get('budgets', [BudgetsController::class, 'index'])->name('budgets.index');
+Route::get('budgets/{acquisition}/create', [BudgetsController::class, 'create'])->name('budgets.create');
+Route::post('budgets', [BudgetsController::class, 'store'])->name('budgets.store');
+Route::get('budgets/{id}', [BudgetsController::class, 'edit'])->name('budgets.edit');
+Route::put('budgets/{id}', [BudgetsController::class, 'update'])->name('budgets.update');
+Route::get('budgets/{id}/show', [BudgetsController::class, 'show'])->name('budgets.show');
+Route::delete('budgets/{budget}', [BudgetsController::class, 'destroy'])->name('budgets.destroy');

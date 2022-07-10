@@ -45,8 +45,8 @@
           </tr>
         </thead>
         <tbody class="table-dark">
+          @foreach( $socios as $socio )
           <tr>
-            @foreach( $socios as $socio )
 
               <td> {{
               $socio->payments->count() ?
@@ -59,7 +59,9 @@
               <td> {{$socio->name}}           </td>
               <td> {{$socio->membership}}     </td>
               <td> {{$socio->identification}} </td>
-              <td> {{$socio->status}}</td>
+              <td> {{
+              $socio->isActive() == false ? "Inactivo" : "Activo"  
+              }}</td>
               <!-- BOTONES DE OPCIONES-->
               <td class="opciones">
                 <a href="{{ route('socios.edit', $socio->id)}}" class="btn btn-outline-warning">Editar<a>  
@@ -75,8 +77,8 @@
                 <a href="{{ route('socios.show', $socio->id)}}" class="btn btn-outline-info">Ver</a>
                 <a href="{{ route('payments.create', $socio->id)}}" class="btn btn-outline-info">Pagar</a>
               </td>
+            </tr>
             @endforeach
-          </tr>
         </tbody>
       </table>
     </div>

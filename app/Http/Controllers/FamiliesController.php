@@ -14,13 +14,8 @@ class FamiliesController extends Controller
 
     public function store(Request $request){
 
-        $families = Family::create([
-            'socio_id'          => $request->socio_id,
-            'name'              => strtoupper($request->name),
-            'lastname'          => strtoupper($request->lastname),
-            'identification'    => $request->identification,
-            'type'              => strtoupper($request->type),
-        ]);
+        $families = new Family($request->input());
+        $families->save();
 
         return redirect()->route('socios.index',compact('families'));
     }
