@@ -25,16 +25,16 @@ class Socio extends Model
         return $this->hasMany(Family::class);
     }
 
-    public function payments(){
-        return $this->hasMany(Payment::class);
+    public function lobbyPayments(){
+        return $this->hasMany(lobbyPayment::class);
     }
 
     public function isActive(){
-        if(!$this->payments()->count()){
+        if(!$this->lobbyPayments()->count()){
             return false;
         }
 
-        $lastPayment = $this->payments()->latest()->first();
+        $lastPayment = $this->lobbyPayments()->latest()->first();
 
         $end         = $lastPayment->fecha_vencimiento;
         

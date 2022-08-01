@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\AcquisitionsController;
+use App\Http\Controllers\BudgetPaymentsController;
 use App\Http\Controllers\BudgetsController;
 use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\FamiliesController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\LobbyPaymentsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProvidersController;
 use App\Http\Controllers\RegistersController;
@@ -37,10 +38,16 @@ Route::post('families', [FamiliesController::class, 'store'])->name('families.st
 
 Route::resource('socios' , SocioController::class);
 
-Route::get ('payments', [PaymentsController::class, 'index'])->name('payments.index');
-Route::get ('payments/{socio}/create', [PaymentsController::class, 'create'])->name('payments.create');
-Route::post('payments', [PaymentsController::class, 'store'])->name('payments.store');
-Route::get ('payments/{id}/details', [PaymentsController::class, 'show'])->name('payments.show');
+Route::get ('payments/lobbyPayments', [LobbyPaymentsController::class, 'index'])->name('payments/lobbyPayments.index');
+Route::get ('payments/lobbyPayments/{socio}/create', [LobbyPaymentsController::class, 'create'])->name('payments/lobbyPayments.create');
+Route::post('payments/lobbyPayments', [LobbyPaymentsController::class, 'store'])->name('payments/lobbyPayments.store');
+Route::get ('payments/lobbyPayments/{id}/details', [LobbyPaymentsController::class, 'show'])->name('payments/lobbyPayments.show');
+
+Route::get ('payments/budgetPayments', [BudgetPaymentsController::class, 'index'])->name('payments/budgetPayments.index');
+Route::get ('payments/budgetPayments/{budget}/create', [BudgetPaymentsController::class, 'create'])->name('payments/budgetPayments.create');
+Route::post('payments/budgetPayments', [BudgetPaymentsController::class, 'store'])->name('payments/budgetPayments.store');
+Route::get ('payments/budgetPayments/{id}/details', [BudgetPaymentsController::class, 'show'])->name('payments/budgetPayments.show');
+
 
 Route::get   ('providers', [ProvidersController::class, 'index'])->name('providers.index');
 Route::get   ('providers/create', [ProvidersController::class, 'create'])->name('providers.create');

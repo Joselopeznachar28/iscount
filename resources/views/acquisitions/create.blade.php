@@ -1,8 +1,9 @@
 @extends('layouts.principal')
 
+    <h1>Agregar Requerimiento</h1><hr><br>
+
     @section('contenido')
     
-        <h1>Agregar Requerimiento</h1><hr><br>
         <form action="{{route('acquisitions.store')}}" method="post" novalidate>
             @csrf
 
@@ -25,8 +26,13 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <button type="submit" onclick="return ('Desea Realizar este Requerimiento?')" value="Guardar" class="btn btn-outline-success">Guardar</button>
-                    <a href="{{route('departments.index')}}" class="btn btn-outline-primary">Regresar</a>
+
+                    <input type="reset" value="Borrar Formulario" class="btn btn-outline-warning" onclick="return confirm('¿Desea Limpiar el Formulario?')">
+
+                    <button type="submit" onclick="return confirm('Desea Realizar este Requerimiento?')" value="Guardar" class="btn btn-outline-success">Guardar</button>
+
+                    <a href="{{route('departments.index')}}" class="btn btn-outline-primary" onclick="return confirm('Desea regresar?')">Regresar</a>
+                    
                 </div>
             </div>
         </form>

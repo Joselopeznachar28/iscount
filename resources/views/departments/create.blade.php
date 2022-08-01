@@ -1,12 +1,11 @@
 @extends('layouts.principal')
 
+    <h1>Crear departamento</h1><hr><br>
     @section('contenido')
 
     <form  action="{{route('departments.store')}}" method="POST" class="row g-3 needs-validation" novalidate>
         @csrf
 
-        <h1>Crear departamento</h1><hr><br>
-        
         <!-- NOMBRE Y DESCRIPTION -->
         <div class="row">
 
@@ -32,8 +31,11 @@
           <div class="col-sm-6">
 
             <input type="submit" class="btn btn-outline-success" onclick="return confirm('¿Desea Guardar este Departamento?')" value="Guardar">
+
             <input type="reset" value="Borrar Formulario" class="btn btn-outline-warning" onclick="return confirm('¿Desea Limpiar el Formulario?')">
-            <a href="{{route('departments.index')}}" class="btn btn-outline-primary" >Regresar</a>
+
+            <a href="{{route('departments.index')}}" class="btn btn-outline-primary" onclick="return confirm('¿Desea Regresar?')">Regresar</a>
+
           </div>
 
         </div>

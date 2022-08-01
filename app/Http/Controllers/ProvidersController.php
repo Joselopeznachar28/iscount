@@ -25,12 +25,12 @@ class ProvidersController extends Controller
         $providers = Provider::create([
             'name'              => $request->name,
             'type_identification'    => $request->type_identification,
+            'type_document'    => $request->type_document,
             'identification'    => $request->identification,
             'email'             => $request->email,
             'contact'           => $request->contact,
             'description'       => $request->description,
         ]);
-
         return redirect()->route('providers.index', compact('providers'));
 
     }
@@ -58,6 +58,7 @@ class ProvidersController extends Controller
         $provider = Provider::where('id', '=' , $id)->update([
             'name' => $request->name,
             'type_identification' => $request->type_identification,
+            'type_document' => $request->type_document,
             'identification' => $request->identification,
             'email' => $request->email,
             'contact' => $request->contact,

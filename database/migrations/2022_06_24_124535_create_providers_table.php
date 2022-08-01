@@ -18,6 +18,7 @@ class CreateProvidersTable extends Migration
             $table->string('name');
             $table->string('type_identification');
             $table->string('identification')->unique();
+            $table->string('type_document');
             $table->string('email')->unique();
             $table->string('contact');
             $table->text('description')->nullable();

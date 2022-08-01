@@ -1,13 +1,13 @@
 @extends('layouts.principal')
 
+    <h1>Detalles de los Presupuestos</h1><hr><br>
     @section('contenido')
-        <h1>Detalles de los Presupuestos</h1><hr><br>
 
         <div class="row">
 
           <div class="col-sm-6">
             <label for="provider_id" class="form-label">Proveedor</label><br>
-            <input type="text" name="provider_id" id="provider_id" class="form-control" value="{{$budget->provider_id}}" disabled readonly>
+            <input type="text" name="provider_id" id="provider_id" class="form-control" value="{{$budget->provider->name}}" disabled readonly>
           </div>
 
           <div class="col-sm-6">

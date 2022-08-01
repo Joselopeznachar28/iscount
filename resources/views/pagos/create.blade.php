@@ -1,9 +1,12 @@
 @extends('layouts.principal')
 
+    <h1>Realizar Pago</h1><hr>
+
     @section('contenido')
+
         <form  action="{{ route ('pagos.store') }}" method="POST" class="row g-3 needs-validation" novalidate enctype="multipart/form-data">
         @csrf
-            <h1>Pago</h1><hr>
+
             <div class="row">
                 <div class="col-sm-6">
                     <label for="forma_pago" class="form-label">Forma de Pago</label>
@@ -27,12 +30,12 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label for="monto" class="form-label">Monto a Pagar</label>
-                    <input type="number" name="monto" id="monto" class="form-control" min=0 step=30>
+                    <input type="number" name="monto" id="monto" class="form-control" min=0>
                 </div>
 
                 <div class="col-sm-6">
-                <label for="comprobante">Comprobane de Pago</label>
-                <input type="file" name="comprobante" id="comprobante" class="form-control">
+                    <label for="comprobante">Comprobane de Pago</label>
+                    <input type="file" name="comprobante" id="comprobante" class="form-control">
                 </div>
             </div>
             <br>

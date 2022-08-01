@@ -16,12 +16,9 @@ class CreateBudgetsTable extends Migration
         Schema::create('budgets', function (Blueprint $table) {
             
             $table->bigIncrements('id');
-            $table->float('quantity');
-            $table->float('unitPriceBs');
-            $table->float('totalPriceBs');
-            $table->float('unitPriceDollar');
-            $table->float('totalPriceDollar');
+            $table->uuid('budget_id')->unique();
             $table->text('observations');
+            $table->boolean('is_Winner')->default(false);
 
 
             $table->foreignId('acquisition_id')->constrained('acquisitions')->onUpdate('cascade')->onDelete('cascade');

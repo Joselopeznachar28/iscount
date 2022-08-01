@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class lobbyPayment extends Model
 {
     use HasFactory;
 
@@ -17,7 +17,7 @@ class Payment extends Model
         'tipo_pago',
         'monto',
         'comprobante',
-        'payment_id',
+        'lobby_payment_id',
         'fecha_pago',
         'fecha_vencimiento',
         'descripcion',
@@ -49,5 +49,9 @@ class Payment extends Model
 
     public function socio(){
         return $this->belongsTo(Socio::class);
+    }
+
+    public function budget(){
+        return $this->belongsTo(Budget::class);
     }
 }

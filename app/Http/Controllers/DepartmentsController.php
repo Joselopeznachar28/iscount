@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DepartmentRequest;
 use App\Models\Department;
 use Illuminate\Http\Request;
 
@@ -21,12 +22,9 @@ class DepartmentsController extends Controller
 
     }
 
-    public function store(Request $request){
-
-        $departments = Department::create([
-            'name'          => $request->name,
-            'description'   => $request->description,
-        ]);
+    public function store(DepartmentRequest $request){
+        
+        $departments = Department::create($request->all());
 
         return  redirect()->route('departments.index', compact('departments'));
 

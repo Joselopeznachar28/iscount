@@ -50,8 +50,8 @@
                 
                 <div class="row">
                     <div class="col-sm-2">
-                        <label for="tipo_identificacion">Nacionalidad</label>
-                        <select name="tipo_identificacion" id="tipo_identificacion" class="form-control">
+                        <label for="typeIdentification">Nacionalidad</label>
+                        <select name="typeIdentification" id="typeIdentification" class="form-control">
                             <option value="Venezolano">V-</option>
                             <option value="Extranjero">E-</option>
                             <option value="Extranjero" selected="selected" disabled>-- Seleccionar --</option>
@@ -74,18 +74,6 @@
                         <input type="text" name="address" id="address" class="form-control" value="{{$socio->address}}">
                     </div>
                     <div class="col-sm-6">
-                        <label for="status">Estado</label>
-                        <select name="status" id="status" class="form-control">
-                            <option selected='selected' value="Activo"> Activo </option>
-                            <option selected='selected' value="Inactivo"> Inactivo </option>
-                            <option selected='selected' disabled> -- Seleccionar -- </option>
-                        </select>
-                    </div>
-                </div>
-                <br>
-
-                <div class="row">
-                    <div class="col-sm-6">
                         <label for="membership">Membresia</label>
                         <input type="membership" id="membership" class="form-control" value="{{ $socio->membership }}" disabled readonly>
                     </div>
@@ -93,9 +81,12 @@
                 <br>
 
             <div class="row-3">
+
                 <button  type="submit" onclick="return confirm('Desea guardar la informacion?')" value="Guardar" class="btn btn-outline-success">Guardar</button>
 
-                <a href="{{ route ('socios.index') }}" class="btn btn-outline-primary">Listado de Socios</a>
+                <button  type="reset" onclick="return confirm('Desea Borrar el formulario?')" value="Borrar" class="btn btn-outline-warning">Borrar</button>
+
+                <a href="{{ route ('socios.index') }}" class="btn btn-outline-primary" onclick="return confirm('Desea Regresar?')" >Listado de Socios</a>
             </div>
         </div>
     </form>

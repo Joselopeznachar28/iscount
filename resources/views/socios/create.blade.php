@@ -1,10 +1,10 @@
 @extends('layouts.principal')
 
+    <h1>Datos del Socio</h1><hr>
     @section('contenido')
 
         <form action="{{ route ('socios.store') }}" method="post" class="row g-3 needs-validation" novalidate >
         @csrf
-            <h1>Datos del Socio</h1><hr>
             
             <div class="row">
                 <div class="col-sm-6">
@@ -12,18 +12,18 @@
                     <input type="text" name="name" id="name" placeholder="Ingrese el Nombre" class="form-control" >
                 </div>
                 <div class="col-sm-6">
-                    <label for="lastname" class="form-label">Apelildo</label>
-                    <input type="lastname" name="lastname" id="lastname" placeholder="Ingrese el Apellido" class="form-control" >
+                    <label for="lastname" class="form-label">Apellido</label>
+                    <input type="text" name="lastname" id="lastname" placeholder="Ingrese el Apellido" class="form-control" >
                 </div>
             </div>
             <br>
             
             <div class="row">
                 <div class="col-sm-2">
-                    <label for="tipo_identificacion">Nacionalidad</label>
-                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control">
-                        <option value="Venezolana" selected="selected">V-</option>
-                        <option value="Extranjero" selected="selected">E-</option>
+                    <label for="typeIdentification" class="form-label">Nacionalidad</label>
+                    <select name="typeIdentification" id="typeIdentification" class="form-control">
+                        <option value="Venezolana">V-</option>
+                        <option value="Extranjero">E-</option>
                         <option value="Seleccionar" selected="selected" disabled>--Seleccionar--</option>
                     </select>
                 </div>
@@ -50,7 +50,7 @@
 
                 <button  type="submit" onclick="return confirm('Desea guardar este nuevo Socio?')" value="Guardar" class="btn btn-outline-success">Guardar</button>
 
-                <button  type="reset" onclick="return confirm('Desea resetear el formulario?')" value="Borrar" class="btn btn-outline-warning">Borrar</button>
+                <button  type="reset" onclick="return confirm('Desea Borrar el formulario?')" value="Borrar" class="btn btn-outline-warning">Borrar</button>
 
                 <a href="{{ route ('socios.index') }}" class="btn btn-outline-primary">Listado de Socios</a>
 

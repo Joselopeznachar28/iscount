@@ -16,13 +16,20 @@ class CreateBudgetProductsTable extends Migration
         Schema::create('budget_products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->float('price');
+            $table->text('description');
             $table->float('quantity');
+            $table->float('unitPriceBs');
+            $table->float('totalPriceBs');
+            $table->float('unitPriceDollar');
+            $table->float('totalPriceDollar');
+            
+            $table->foreignId('budget_id')->constrained('budgets')->onUpdate('cascade')->onDelete('cascade'); 
+
             $table->timestamps();
         });
-    }
+        }
 
-    /**
+        /**
      * Reverse the migrations.
      *
      * @return void

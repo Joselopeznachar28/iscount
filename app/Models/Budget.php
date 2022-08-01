@@ -11,13 +11,12 @@ class Budget extends Model
     protected $fillable = [
         'acquisition_id',
         'provider_id',
-        'quantity',
-        'unitPriceBs',
-        'totalPriceBs',
-        'unitPriceDollar',
-        'totalPriceDollar',
+        'budget_id' , // CODIGO
         'observations',
+        'is_Winner',
     ];
+
+    use HasFactory;
 
     public function acquisition(){
 
@@ -37,5 +36,10 @@ class Budget extends Model
         
     }
 
-    use HasFactory;
+    public function budgetPayments(){
+
+        return $this->hasMany(BudgetPayment::class);
+        
+    }
+
 }

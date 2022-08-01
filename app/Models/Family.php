@@ -13,6 +13,7 @@ class Family extends Model
         'type',
         'lastname',
         'identification',
+        'tipo_identification'
     ];
 
     public function socio(){

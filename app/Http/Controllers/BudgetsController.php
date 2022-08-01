@@ -2,44 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BudgetRequest;
 use App\Models\Acquisition;
 use App\Models\Budget;
+use App\Models\BudgetProduct;
 use App\Models\Provider;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class BudgetsController extends Controller
 {
     public function index(){
 
-        $budgets = Budget::all();
-        $providers = Provider::all();
+        $budgets = Budget::with('provider')->get();
 
-        return view('budgets.index',compact('providers','budgets'));
+        return view('budgets.index',compact('budgets'));
 
     }
 
     public function create(Acquisition $acquisition){
 
         $providers = Provider::all();
-        
+
         return view('budgets.create', compact('providers','acquisition'));
 
     }
 
-    public function store(Request $request){
+    public function store(BudgetRequest $request){
 
-        $budget = Budget::create([
-            'acquisition_id' => $request->acquisition_id ,
-            'provider_id' => $request->provider_id ,
-            'quantity' => $request->quantity ,
-            'unitPriceBs' => $request->unitPriceBs ,
-            'totalPriceBs' => $request->totalPriceBs ,
-            'unitPriceDollar' => $request->unitPriceDollar ,
-            'totalPriceDollar' => $request->totalPriceDollar ,
-            'observations' => $request->observations ,
-        ]);
+        //GET ACQUISITION
+        $acquisition = Acquisition::find($request->acquisition_id);
 
-        return redirect()->route('budgets.index', compact('budget'));
+        //WE CREATE THE VARIABLES WITH VALUE FROM FORM WITH REQUEST
+        $budgets = $request->budgets;
+        $budgetProducts = $request->products;
+
+        foreach($budgets as $budget){
+            $newBudget = $acquisition->budgets()->saveMany([
+                new Budget([
+                    'provider_id'      => $budget['provider_id'] ,
+                    'budget_id'        => strtoupper('COD-' . (string) Str::random(5)),
+                    'observations'     => $budget['observations'] ,
+                ]),
+            ]);
+        }
+        $hasProducts = $request->has('products');
+        //$budget = $newBudget::find($newBudget->id);
+        if($hasProducts){
+            foreach ($budgetProducts as $budgetProduct){
+                //WE CREATE THE VARIABLES TO TOTALPRICEVEF AND TOTALRICEDOLLAR
+                $totalPriceBs     = ($budgetProduct['quantity'] * $budgetProduct['unitPriceBs']);
+                $totalPriceDollar = ($budgetProduct['quantity'] * $budgetProduct['unitPriceDollar']);
+                     $newBudget[0]->budgetProducts()->saveMany([
+                        new BudgetProduct([
+                            'name'             => $budgetProduct['name'],
+                            'description'      => $budgetProduct['description'],
+                            'quantity'         => $budgetProduct['quantity'] ,
+                            'unitPriceBs'      => $budgetProduct['unitPriceBs'] ,
+                            'totalPriceBs'     => $totalPriceBs ,
+                            'unitPriceDollar'  => $budgetProduct['unitPriceDollar'] ,
+                            'totalPriceDollar' => $totalPriceDollar ,
+                        ]),
+                ]);
+            } 
+        }
+        
+        return redirect()->route('budgets.create', compact('budgets','budgetProducts','acquisition'));
 
     }
 

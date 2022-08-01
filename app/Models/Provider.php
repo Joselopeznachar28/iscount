@@ -13,6 +13,7 @@ class Provider extends Model
         'name',
         'type_identification',
         'identification',
+        'type_document',
         'email',
         'contact',
         'description'

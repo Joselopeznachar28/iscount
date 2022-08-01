@@ -1,12 +1,11 @@
 @extends('layouts.principal')
 
+    <h1>Editar Presupuesto</h1><hr><br>
     @section('contenido')
 
     <form  action="{{ route('budgets.update' , $budget->id)}}" method="POST" class="row g-3 needs-validation" novalidate>
         @method('PUT')
         @csrf
-
-        <h1>Editar Presupuestos</h1><hr><br>
         
         <div class="row">
 
@@ -77,6 +76,9 @@
             <div class="col-sm-6">
 
                 <input type="submit" class="btn btn-outline-success" onclick="return confirm('¿Desea Guardar los Cambios?')" value="Actualizar">
+
+                <input type="reset" value="Borrar Formulario" class="btn btn-outline-warning" onclick="return confirm('¿Desea Limpiar el Formulario?')">
+                
                 <a href="{{route('budgets.index')}}" class="btn btn-outline-primary" onclick="return confirm('¿Desea salir sin actualizar cambios?')">Regresar</a>
 
             </div>

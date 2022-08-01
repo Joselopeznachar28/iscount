@@ -8,7 +8,7 @@
             <div class="col-sm-6">
 
                 <label for="department_id" class="form-label">Departamento</label>
-                <input type="text" name="department_id" id="department_id" class="form-control" disable readonly value="{{$acquisition->department_id}}">
+                <input type="text" name="department_id" id="department_id" class="form-control" disable readonly value="{{$acquisition->department->name}}">
 
             </div>
 

@@ -1,69 +1,69 @@
 @extends('layouts.principal')
 
-@section('contenido')
-    
-    <form action="{{route('families.store')}}" method="post" novalidate>
-        @csrf
-        <!-- DATOS DE LOS FAMILIARES -->
-        <div class="row">
-            <div class="col-sm-12">
-                <h1 style="text-align: center;">Datos del Familiar</h1>
-            </div>
-        </div>
-        <hr>
 
-        <!-- CAMPOS DE FAMILIARES -->
-        <div id="camposFamiliar">
-            <input type="hidden" name="socio_id" id="socio_id" value="{{$socio->id}}">
-            <!-- NOMBRE Y APELLIDO -->
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="name" class="form-label">Nombre</label>
-                    <input type="text" name="name" id="nombre" placeholder="Ingrese el Nombre" class="form-control" >
-                </div>
-                <div class="col-sm-6">
-                    <label for="lastname" class="form-label">Apellido</label>
-                    <input type="text" name="lastname" id="lastname" placeholder="Ingrese el Apellido" class="form-control" >
-                </div>
-            </div>
-            <br>
-            <!-- IDENTIFICACION Y TIPO DE FAMILIAR -->
-            <div class="row">
-                <div class="col-sm-6">
-                    <label for="identification" class="form-label">Identificacion</label>
-                    <input type="text" name="identification" id="identification" placeholder="Ingrese la Cedula" class="form-control" >
-                </div>
-                <div class="col-sm-6">
-                    <label for="type" class="form-label">Familiar</label>
-                    <br>
-                    <select name="type" id="type" class="form-control">
-                        <option value="Padre" selected='selected'>Padre</option>
-                        <option value="Madre" selected='selected'>Madre</option>
-                        <option value="Hijo" selected='selected'>Hijo</option>
-                        <option value="Hija" selected='selected'>Hija</option>
-                        <option value="Seleccionar" selected='selected' disabled>--Seleccionar--</option>
-                    </select>
-                    <br>
-                </div>
-            </div><hr>  
-        </div>
+    <h1>Datos del Familiar</h1><hr>
+    @section('contenido')
         
-        <!-- Repeticion de los campos familiar -->
-        <div id="otroFamiliar">
+        <form action="{{route('families.store')}}" method="post" novalidate>
+            @csrf
 
-        </div>
+            <input type="hidden" name="socio_id" id="socio_id" value="{{$socio->id}}">
 
-        <!-- BOTONES DE OPCIONES -->
-        <div class="row-3 f-end">
+            <!-- CAMPOS DE FAMILIARES -->
+            <div class="wrapper">
+                    <!-- NOMBRE Y APELLIDO -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" name="familyMembers[0][name]" id="memberName" placeholder="Ingrese el Nombre" class="form-control">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="lastname" class="form-label">Apellido</label>
+                            <input type="text" name="familyMembers[0][lastname]" id="memberLastName" placeholder="Ingrese el Apellido" class="form-control">
+                        </div>
+                    </div>
+                    <br>
+                    <!-- IDENTIFICACION Y TIPO DE FAMILIAR -->
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="tipo_identification" class="form-label">Nacionalidad</label>
+                            <select name="familyMembers[0][tipo_identification]" id="memberTypeIdentification" class="form-control">
+                                <option value="Venezolana" selected="selected">V-</option>
+                                <option value="Extranjero" selected="selected">E-</option>
+                                <option value="Seleccionar" selected="selected" disabled>--Seleccionar--</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="identification" class="form-label">Identificacion</label>
+                            <input type="text" name="familyMembers[0][identification]" id="memberIdentification" placeholder="Ingrese la Cedula" class="form-control" >
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="type" class="form-label">Familiar</label>
+                            <br>
+                            <select name="familyMembers[0][type]" id="typeFamily" class="form-control">
+                                <option value="Padre">Padre</option>
+                                <option value="Madre">Madre</option>
+                                <option value="Hijo">Hijo</option>
+                                <option value="Hija">Hija</option>
+                                <option value="Seleccionar" selected='selected' disabled>--Seleccionar--</option>
+                            </select>
+                            <br>
+                        </div>
+                    </div><hr>  
 
-            <input type="button" value="Agregar Familiar" class="form-control" id="addFamiliar" class="btn btn-outline-success">
+            </div>
 
-            <button  type="submit" onclick="return confirm('Desea guardar este nuevo Familiar?')" value="Guardar" class="btn btn-outline-success">Guardar</button>
+            <!-- BOTONES DE OPCIONES -->
+            <div class="row-3 f-end">
 
-            <button  type="reset" onclick="return confirm('Desea resetear el formulario?')" value="Borrar" class="btn btn-outline-warning">Borrar</button>
+                <button  type="button" class="btn btn-outline-success" id="addFamiliar">Agregar Familiar</button>
 
-            <a href="{{ route ('socios.index') }}" class="btn btn-outline-primary">Listado de Socios</a>
+                <input type="reset" value="Borrar Formulario" class="btn btn-outline-warning" onclick="return confirm('¿Desea Limpiar el Formulario?')">
 
-        </div>
-    </form>
-@endsection
+                <button  type="submit" onclick="return confirm('Desea guardar este nuevo Familiar?')" value="Guardar" class="btn btn-outline-success">Guardar</button>
+
+                <a href="{{ route ('socios.index') }}" class="btn btn-outline-primary">Listado de Socios</a>
+
+            </div>
+        </form>
+    @endsection

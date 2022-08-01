@@ -2,6 +2,7 @@
 
     <nav class="navegacion-principal">
         <a href="{{route('departments.index')}}">Departamentos</a>
+        <a href="{{route('budgets.index')}}">Presupuestos</a>
     </nav>
 
     @section('contenido')
@@ -12,6 +13,7 @@
 
             <thead class="table-dark">
                 <tr>
+                    <th scope="col" class="t-a-center">#</th>
                     <th scope="col" class="t-a-center">Departamento</th>
                     <th scope="col" class="t-a-center">Codigo de Requerimiento</th>
                     <th scope="col" class="t-a-center">Fecha de Peticion</th>
@@ -22,7 +24,8 @@
             <tbody class="table-dark">
                 @foreach ($acquisitions as $acquisition)
                     <tr>
-                        <td class="t-a-center">{{$acquisition->department_id}}</td>
+                        <td class="t-a-center">{{$acquisition->id}}</td>
+                        <td class="t-a-center">{{$acquisition->department->name}}</td>
                         <td class="t-a-center">{{$acquisition->acquisition_code}}</td>
                         <td class="t-a-center">{{$acquisition->date_acquisition}}</td>
                         <td class="opcionesr">

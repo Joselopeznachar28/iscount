@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormSocioRequest;
 use App\Models\Payment;
 use App\Models\Socio;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Familiar;
@@ -26,14 +26,7 @@ class SocioController extends Controller
         // Se realiza un join con el modelo socio a la tabla familiars y hacen la conexion con el id de la tabla socio y el id de la tabla familiars
         $search = $request->input('search');
 
-       /* $socios = Socio::where('name','LIKE','%'.$consulta.'%')
-            ->orWhere('lastname', 'LIKE', '%'.$consulta.'%')
-            ->orWhere('identification', 'LIKE', '%'.$consulta.'%')
-            ->orWhere('status','LIKE', '%'.$consulta. '%')
-            ->orderBy('id','asc')
-            ->get();*/
-
-            $socios = Socio::with('payments')->when($search, function ($query, $search) {
+            $socios = Socio::with('lobbypayments')->when($search, function ($query, $search) {
                 $query->orWhere('identification', 'LIKE', '%'.$search.'%')
                       ->orWhere('membership','LIKE', '%'.$search.'%');
             })
@@ -63,13 +56,12 @@ class SocioController extends Controller
      */
 
     //Para crear
-    public function store(Request $request)
-    {  
-
+    public function store(FormSocioRequest $request)
+    {
         $socio = Socio::create([
             'name'                  => strtoupper($request->name),
             'lastname'              => strtoupper($request->lastname),
-            'typeIdentification'    => strtoupper($request->tipo_identificacion),
+            'typeIdentification'    => strtoupper($request->typeIdentification),
             'identification'        => $request->identification,
             'email'                 => strtoupper($request->email),
             'address'               => strtoupper($request->address),
@@ -87,7 +79,7 @@ class SocioController extends Controller
      */
     public function show($id)
     {   
-        $socio = Socio::findOrFail($id)->load(['families','payments']);
+        $socio = Socio::findOrFail($id)->load(['families']);
 
         return view('socios.show', compact('socio'));
 

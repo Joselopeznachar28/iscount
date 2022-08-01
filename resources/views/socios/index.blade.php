@@ -15,8 +15,8 @@
     
     <nav class="navegacion-principal">
         <a href=""><img src="" alt=""></a>
-        <a href=" {{ url('socios/create')}}" class="enlaces-sidebar">Crear Socio</a>
-        <a href=" {{ route('payments.index')}}">Pagos</a>
+        <a href=" {{ route('socios.create')}}" class="enlaces-sidebar">Crear Socio</a>
+        <a href=" {{ route('payments/lobbyPayments.index')}}">Pagos</a>
         <a href="" class="enlaces-sidebar">Logout</a>
     </nav>
     
@@ -49,8 +49,8 @@
           <tr>
 
               <td> {{
-              $socio->payments->count() ?
-              $socio->payments()
+              $socio->lobbyPayments->count() ?
+              $socio->lobbyPayments()
               ->latest('fecha_vencimiento')
               ->first()
               ->fecha_vencimiento : "No hay pago cargado"
@@ -71,11 +71,11 @@
                   <button type="submit"
                   value="Eliminar" 
                   class="btn btn-outline-danger" 
-                  onclick="return confirm('Desea eliminar este a este socio de la lista?')">Eliminar</button>
+                  onclick="return confirm('Desea eliminar a este socio de la lista?')">Eliminar</button>
                 </form>
                 <a href="{{route('families.create', $socio->id)}}" class="btn btn-outline-warning">Agregar Familiar</a>
                 <a href="{{ route('socios.show', $socio->id)}}" class="btn btn-outline-info">Ver</a>
-                <a href="{{ route('payments.create', $socio->id)}}" class="btn btn-outline-info">Pagar</a>
+                <a href="{{ route('payments/lobbyPayments.create', $socio->id)}}" class="btn btn-outline-info">Pagar</a>
               </td>
             </tr>
             @endforeach

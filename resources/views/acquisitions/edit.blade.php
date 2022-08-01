@@ -1,12 +1,11 @@
 @extends('layouts.principal')
 
+    <h1>Editar Requerimiento</h1><hr><br>
     @section('contenido')
 
     <form  action="{{ route('acquisitions.update' , $acquisition->id)}}" method="POST" class="row g-3 needs-validation" novalidate>
         @method('PUT')
         @csrf
-
-        <h1>Editar Producto</h1><hr><br>
         
         <!-- DEARTAMENTO Y FECHA DE REQUERIMIENTO -->
         <div class="row">
@@ -14,7 +13,7 @@
             <div class="col-sm-6">
 
                 <label for="department_id" class="form-label">Departamento</label>
-                <input name="department_id" id="department_id" class="form-control" value="{{$acquisition->department_id}}" readonly>
+                <input name="department_id" id="department_id" class="form-control" value="{{$acquisition->department->name}}" readonly>
 
             </div>
 
@@ -51,6 +50,7 @@
             <div class="col-sm-6">
 
                 <input type="submit" class="btn btn-outline-success" onclick="return confirm('¿Desea Guardar los Cambios?')" value="Actualizar">
+                <input type="reset" value="Borrar Formulario" class="btn btn-outline-warning" onclick="return confirm('¿Desea Limpiar el Formulario?')">
                 <a href="{{route('acquisitions.index')}}" class="btn btn-outline-primary" onclick="return confirm('¿Desea salir sin actualizar cambios?')">Regresar</a>
 
             </div>

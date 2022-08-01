@@ -2,8 +2,9 @@
 
 
     <nav class="navegacion-principal">
-        <a href="{{route('products.index')}}">Lista de Productos</a>
+        <a href="{{route('products.index')}}">Productos</a>
         <a href="{{route('providers.create')}}">Crear Proveedor</a>
+        <a href="{{route('departments.index')}}">Departamentos</a>
     </nav>
 
     @section('contenido')

@@ -33,7 +33,11 @@
           <div class="col-sm-6">
 
             <input type="submit" class="btn btn-outline-success" onclick="return confirm('¿Desea Guardar los Cambios?')" value="Actualizar">
-            <a href="{{route('departments.index')}}" class="btn btn-outline-primary" onclick="return confirm('Desea salir sin actualizar la Informacion?')">Regresar</a>
+
+            <input type="reset" value="Borrar Formulario" class="btn btn-outline-warning" onclick="return confirm('¿Desea Limpiar el Formulario?')">
+
+            <a href="{{route('departments.index')}}" class="btn btn-outline-primary" onclick="return confirm('Desea salir sin actualizar los cambios?')">Regresar</a>
+
           </div>
 
         </div>

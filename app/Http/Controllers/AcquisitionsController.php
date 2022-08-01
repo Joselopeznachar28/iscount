@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AcquisitionRequest;
 use App\Models\Acquisition;
 use App\Models\Department;
 use Carbon\Carbon;
@@ -12,7 +13,7 @@ class AcquisitionsController extends Controller
 {
     public function index(){
 
-        $acquisitions = Acquisition::all();
+        $acquisitions = Acquisition::with('department')->get();
 
         return view('acquisitions.index', compact('acquisitions'));
         
@@ -24,14 +25,14 @@ class AcquisitionsController extends Controller
 
     }
 
-    public function store(Request $request){
+    public function store(AcquisitionRequest $request){
 
         $acquisition = Acquisition::create([
             'department_id'     => $request->department_id,
             'date_acquisition'  => Carbon::now(),
             'date_max'          => $request->date_max,
             'description'       => strtoupper($request->description),
-            'acquisition_code'  => strtoupper('COD-'. (string) Str::random('7')),
+            'acquisition_code'  => strtoupper('COD-'. (string) Str::random(5)),
         ]);
 
         return redirect()->route('acquisitions.index', compact('acquisition'));

@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class BudgetProduct extends Model
 {
     protected $fillable = [
-        //
+        'name',
+        'description',
+        'quantity',
+        'unitPriceBs',
+        'totalPriceBs',
+        'unitPriceDollar',
+        'totalPriceDollar',
     ];
 
     public function product(){

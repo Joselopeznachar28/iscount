@@ -6,11 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ISCount</title>
         <!-- CARGAR LOS ESTIILOS RAPIDAMENTE -->
-        <link rel="preload" href="css/normalize.css">
+        <link rel="preload" href="css/normalize.css" as="style">
         <!-- Para estandarizar las vistas en cualquier navegador -->
         <link rel="stylesheet" href="css/normalize.css">
         <!-- CARGAR LOS ESTIILOS RAPIDAMENTE -->
-        <link rel="preload" href="css/styles.css">
+        <link rel="preload" href="css/styles.css" as="style">
         <!-- ESTILOS PROPIOS -->
         <link rel="stylesheet" href="css/styles.css">
         <!-- ESTILOS DE BOOTSTRAP -->

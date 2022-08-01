@@ -21,6 +21,7 @@ class CreateFamiliesTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('identification');
+            $table->string('tipo_identification');
             $table->string('type');
             
             $table->timestamps();

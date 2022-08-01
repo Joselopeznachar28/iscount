@@ -82,9 +82,13 @@
             <br>
 
             <div class="row">
-                <div class="col-sm-6">
-                    <label for="identificacion">Cedula</label>
-                    <input type="text" name="identificacion" id="identificacion" value="{{$family->identification}}"  class="form-control" aria-label="Disabled input example" disabled readonly>
+                <div class="col-sm-2">
+                    <label for="tipo_identification">Nacionalidad</label>
+                    <input type="text" name="tipo_identification" id="tipo_identification" value="{{$family->tipo_identification}}" class="form-control" aria-label="Disabled input example" disabled readonly>
+                </div>
+                <div class="col-sm-4">
+                    <label for="identification">Cedula</label>
+                    <input type="text" name="identification" id="identification" value="{{$family->identification}}"  class="form-control" aria-label="Disabled input example" disabled readonly>
                 </div>
                 <div class="col-sm-6">
                     <label for="familiar">Familiar</label>
